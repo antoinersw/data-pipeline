@@ -11,7 +11,7 @@ def clean_up():
         full_path_to_check = DATA_SOURCES_OUTDIR + "/" + _ds
 
         if os.path.isfile(full_path_to_check):
-            print(f"Cleaning up {_ds}.")
+           
             os.remove(full_path_to_check)
 
         else:

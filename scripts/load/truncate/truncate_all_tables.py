@@ -7,6 +7,6 @@ def truncate_all_tables():
     for ds in all_tables_to_truncate:
         _ds = ds
         print(_ds)
-        sql = "Truncate table "+ _ds +';'
+        sql = "Drop table if exists "+ _ds +';'
         truncate(sql)
 

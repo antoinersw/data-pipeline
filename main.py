@@ -1,4 +1,4 @@
-from dags.cron import job
+from cron.cron import job
 
 def main():
     job()

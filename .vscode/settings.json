@@ -8,6 +8,15 @@
       "name": "postgres",
       "database": "vaccination_db",
       "username": "postgres"
+    },
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "driver": "PostgreSQL",
+      "name": "main",
+      "database": "postgres",
+      "username": "postgres"
     }
   ]
 }

@@ -26,6 +26,13 @@ vaccination_vs_appointments = f"""
             DELIMITER ',' 
             CSV HEADER;
 """
+geo_etendue = f"""
+COPY geo_etendue(code_commune_INSEE, nom_commune_postal, code_postal, libelle_acheminement, ligne_5, latitude, longitude, code_commune, article, nom_commune, nom_commune_complet, code_departement, nom_departement, code_region, nom_region)
+FROM '{DATA_SOURCES_OUTDIR}/geo_etendue.csv'
+DELIMITER ','
+CSV HEADER;
+
+"""
 
 all_tables = [appointments_by_centers, vaccination_centers,
-              stock, vaccination_vs_appointments]
+              stock, vaccination_vs_appointments, geo_etendue]

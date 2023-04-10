@@ -3,7 +3,8 @@ from config.constants import DATA_SOURCES_OUTDIR
 
 
 appointments_by_centers = f"""
-        CREATE TABLE appointments_by_centers (
+drop table if exists appointments_by_centers;
+    CREATE TABLE appointments_by_centers (
     code_region TEXT,
     region TEXT,
     departement TEXT,
@@ -15,16 +16,18 @@ appointments_by_centers = f"""
     nb_rdv_cnam INTEGER,
     nb_rdv_rappel INTEGER
 );
-
+CREATE INDEX appointments_by_centers_index
+ON appointments_by_centers (id_centre,date_debut_semaine,departement);
 
 """
 vaccination_centers = f"""
+drop table if exists vaccination_centers;
    CREATE TABLE vaccination_centers (
     gid INTEGER,
     nom TEXT,
     arrete_pref_numero TEXT,
     xy_precis TEXT,
-    id_adr INTEGER,
+    id_adr TEXT,
     adr_num TEXT,
     adr_voie TEXT,
     com_cp TEXT,
@@ -64,9 +67,11 @@ vaccination_centers = f"""
     reserve_professionels_sante BOOLEAN,
     centre_type TEXT
 );
-
+CREATE INDEX vaccination_centers_index
+ON vaccination_centers (gid, com_cp,date_fermeture,date_ouverture);
 """
 stock = f"""
+drop table if exists stock;
     CREATE TABLE stock (
     code_departement TEXT,
     departement TEXT,
@@ -78,12 +83,14 @@ stock = f"""
     nb_doses INTEGER,
     date DATE
 );
-
+CREATE INDEX stock_index
+ON stock(date,code_departement);
 """
 vaccination_vs_appointments = f"""
+drop table if exists vaccination_vs_appointments;
     CREATE TABLE vaccination_vs_appointments (
     id_centre TEXT,
-    date_debut_semaine TEXT,
+    date_debut_semaine DATE,
     code_region TEXT,
     nom_region TEXT,
     code_departement TEXT,
@@ -94,8 +101,37 @@ vaccination_vs_appointments = f"""
     doses_allouees TEXT,
     rdv_pris TEXT
 );
+CREATE INDEX vaccination_vs_appointments_index
+ON vaccination_vs_appointments(id_centre,code_departement,date_debut_semaine);
+"""
+
+
+geo_etendue = """
+drop table if exists geo_etendue;
+    CREATE TABLE geo_etendue (
+  code_commune_INSEE TEXT,
+  nom_commune_postal TEXT,
+  code_postal TEXT,
+  libelle_acheminement TEXT,
+  ligne_5 TEXT,
+  latitude FLOAT,
+  longitude FLOAT,
+  code_commune TEXT,
+  article TEXT,
+  nom_commune TEXT,
+  nom_commune_complet TEXT,
+  code_departement TEXT,
+  nom_departement TEXT,
+  code_region TEXT,
+  nom_region TEXT
+);
+
+CREATE INDEX geo_etendue_index
+ON geo_etendue(code_postal);
 
 """
 
+
+
 all_tables_to_create = [appointments_by_centers, vaccination_centers,
-              stock, vaccination_vs_appointments]
+              stock, vaccination_vs_appointments,geo_etendue]
