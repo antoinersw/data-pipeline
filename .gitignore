@@ -1,3 +1,3 @@
-config/constant.py
+config/constants.py
 .*
 __pycache__
