@@ -1,6 +1,6 @@
 
 from scripts.load.truncate.truncate import truncate
-from scripts.sql.tables_to_truncate import all_tables_to_truncate
+from scripts.load.truncate.tables_to_truncate import all_tables_to_truncate
 
 
 def truncate_all_tables(): 

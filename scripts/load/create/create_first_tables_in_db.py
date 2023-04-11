@@ -1,5 +1,5 @@
 from scripts.load.create.create_table import create_table
-from scripts.sql.tables_to_create import all_tables_to_create
+from scripts.load.create.tables_to_create import all_tables_to_create
 
 
 def create_first_tables_in_db():
