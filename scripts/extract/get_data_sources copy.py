@@ -39,7 +39,7 @@ def normalize_csv(ds_name, csv_text):
     if ds_name == "vaccination_centers":
 
         # Read the csv file into a pandas DataFrame
-        df = pd.read_csv(csv_file, sep=';', quoting=csv.QUOTE_MINIMAL,
+        df = pd.read_csv(csv_file, sep=';', quoting=csv.QUOTE_ALL,
                          on_bad_lines='skip', encoding='utf-8')
         # Write the normalized output to a new csv file
 
@@ -47,7 +47,7 @@ def normalize_csv(ds_name, csv_text):
                         doublequote=True, encoding='utf-8'), DATA_SOURCES_OUTDIR)
     else:
         # Read the csv file into a pandas DataFrame
-        df = pd.read_csv(csv_file, low_memory=False, quoting=csv.QUOTE_MINIMAL,
+        df = pd.read_csv(csv_file, low_memory=False, quoting=csv.QUOTE_ALL,
                          sep=",", on_bad_lines='skip', encoding='utf-8')
         
 

@@ -1,10 +1,6 @@
-
-from config.constants import DATA_SOURCES_OUTDIR
-
-
 appointments_by_centers = f"""
-drop table if exists appointments_by_centers;
-    CREATE TABLE appointments_by_centers (
+
+    CREATE TABLE if not exists appointments_by_centers (
     code_region TEXT,
     region TEXT,
     departement TEXT,
@@ -16,13 +12,12 @@ drop table if exists appointments_by_centers;
     nb_rdv_cnam INTEGER,
     nb_rdv_rappel INTEGER
 );
-CREATE INDEX appointments_by_centers_index
+CREATE INDEX if not exists appointments_by_centers_index
 ON appointments_by_centers (id_centre,date_debut_semaine,departement);
 
 """
 vaccination_centers = f"""
-drop table if exists vaccination_centers;
-   CREATE TABLE vaccination_centers (
+   CREATE TABLE if not exists vaccination_centers (
     gid INTEGER,
     nom TEXT,
     arrete_pref_numero TEXT,
@@ -67,12 +62,11 @@ drop table if exists vaccination_centers;
     reserve_professionels_sante BOOLEAN,
     centre_type TEXT
 );
-CREATE INDEX vaccination_centers_index
+CREATE INDEX if not exists vaccination_centers_index
 ON vaccination_centers (gid, com_cp,date_fermeture,date_ouverture);
 """
 stock = f"""
-drop table if exists stock;
-    CREATE TABLE stock (
+    CREATE TABLE if not exists stock (
     code_departement TEXT,
     departement TEXT,
     raison_sociale TEXT,
@@ -83,12 +77,11 @@ drop table if exists stock;
     nb_doses INTEGER,
     date DATE
 );
-CREATE INDEX stock_index
+CREATE INDEX if not exists stock_index
 ON stock(date,code_departement);
 """
 vaccination_vs_appointments = f"""
-drop table if exists vaccination_vs_appointments;
-    CREATE TABLE vaccination_vs_appointments (
+    CREATE TABLE if not exists vaccination_vs_appointments (
     id_centre TEXT,
     date_debut_semaine DATE,
     code_region TEXT,
@@ -101,14 +94,11 @@ drop table if exists vaccination_vs_appointments;
     doses_allouees TEXT,
     rdv_pris TEXT
 );
-CREATE INDEX vaccination_vs_appointments_index
+CREATE INDEX if not exists vaccination_vs_appointments_index
 ON vaccination_vs_appointments(id_centre,code_departement,date_debut_semaine);
 """
-
-
 geo_etendue = """
-drop table if exists geo_etendue;
-    CREATE TABLE geo_etendue (
+    CREATE TABLE if not exists geo_etendue (
   code_commune_INSEE TEXT,
   nom_commune_postal TEXT,
   code_postal TEXT,
@@ -126,12 +116,36 @@ drop table if exists geo_etendue;
   nom_region TEXT
 );
 
-CREATE INDEX geo_etendue_index
+CREATE INDEX if not exists geo_etendue_index
 ON geo_etendue(code_postal);
 
 """
 
+aggreg_count_vax = """ 
+ create table if not exists aggreg_count_vax  (
+    gid TEXT,
+    nom_centre TEXT,
+    nb_of_appointments INTEGER,
+    is_with_doctolib INTEGER
+    ,cp_commune TEXT
 
+);
+"""
+
+overload_appointment_monitoring = """ 
+    CREATE TABLE if not exists overload_appointment_monitoring (
+    mois TEXT,
+    annee TEXT,
+    week_num TEXT,
+    id_centre TEXT,
+    departement TEXT,
+    nb_rdv_pris INTEGER,
+    doses_allouees INTEGER,
+    rdv_planifies INTEGER,
+    mois_anee TEXT,
+    semaine_annee TEXT
+    );
+"""
 
 all_tables_to_create = [appointments_by_centers, vaccination_centers,
-              stock, vaccination_vs_appointments,geo_etendue]
+                        stock, vaccination_vs_appointments, geo_etendue, aggreg_count_vax, overload_appointment_monitoring]

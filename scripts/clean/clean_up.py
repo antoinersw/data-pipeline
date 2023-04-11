@@ -17,3 +17,5 @@ def clean_up():
         else:
             print(
                 f"The file {_ds} does not exist in the directory {full_path_to_check}.")
+    print('✅  Clean up completed')
+

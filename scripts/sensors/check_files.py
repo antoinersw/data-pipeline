@@ -14,4 +14,4 @@ def check_files():
         else:
             print(f"The file {_ds} does not exist in the directory {full_path_to_check}.")
             sys.exit(1)
-    
+    print("✅  Files are in the correct folder")   

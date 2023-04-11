@@ -1,5 +1,5 @@
 from scripts.load.connect_to_db import connect_to_db 
-from scripts.load.insert.datamart_tables import datamart_tables
+from scripts.sql.datamart_tables import datamart_tables
 
 def insert(sql_statement):
 

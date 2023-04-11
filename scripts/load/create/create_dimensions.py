@@ -7,3 +7,4 @@ def create_dimensions():
     create_dim_date()
     create_dim_center()
     create_dim_geo()
+    print("✅  All dimensions have been created")
