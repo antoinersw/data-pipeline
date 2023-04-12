@@ -5,3 +5,4 @@ def copy_tables(sql_statement):
     [db, conn] = connect_to_db()
     db.execute(sql_statement)
     conn.commit()
+    conn.close()

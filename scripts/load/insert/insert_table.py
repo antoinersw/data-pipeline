@@ -6,3 +6,4 @@ def insert(sql_statement):
 
     db.execute(sql_statement)
     conn.commit()
+    conn.close()

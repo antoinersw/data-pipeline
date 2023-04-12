@@ -6,13 +6,14 @@ from scripts.check.check_files import check_files
 from scripts.load.copy.copy_all_data_source_in_db import copy_all_data_source_in_db
 from scripts.load.truncate.truncate_all_tables import truncate_all_tables
 from scripts.load.create.create_dimensions import create_dimensions
-from scripts.load.insert.aggreg_count_vax import make_datamart_table
+from scripts.load.insert.make_datamart_table import make_datamart_table
 from scripts.load.create.create_first_tables_in_db import create_first_tables_in_db
 from scripts.clean.clean_up import clean_up
 
 
 def job():
     print("🕑 Refreshing datas...")
+    # @todo => backup de la database
     # fetch data and put them in the data_sources_outdir. Can be modified in the constant file
     get_data_sources()
     # check if files are in the right dir, if not, stop the process.

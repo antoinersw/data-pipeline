@@ -24,6 +24,5 @@ def connect_to_main_db():
         user=DB_USER,
         password=DB_PASS
     )
-
     db = conn.cursor()
     return [db,conn]
