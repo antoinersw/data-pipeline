@@ -4,4 +4,4 @@ Comment utilier ce programme ?
 2. Lancer le script main.py
    Info : Le script se lance toutes les heures. Cette valeur peut être modifier dans config/constants.py
 
- <div style="text-align:center"><img src="https://image.noelshack.com/fichiers/2023/15/3/1681319462-success.png" alt="success"></div>
+ <div style="text-align:center"><img src="https://image.noelshack.com/fichiers/2023/15/3/1681335880-success.png" alt="success"></div>

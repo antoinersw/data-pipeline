@@ -72,8 +72,10 @@ def get_single_data(ds_obj):
     else:
         print('Request failed, check your connection')
         return False
+    
 
 
 def get_data_sources():
     for sources in data_sources:
         get_single_data(sources)
+    print("✅  Data souces collected")

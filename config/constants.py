@@ -5,4 +5,4 @@ DB_USER ="postgres"
 DB_PASS ="root"
 DATA_SOURCES_OUTDIR ="C:/Users/Public/doctolib_export"
 #in Hours
-REFRESH_RATE =5
+REFRESH_RATE =1
