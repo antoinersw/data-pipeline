@@ -34,7 +34,7 @@ def job():
     print("🎇 Pipeline completed 🎇")
 
 
-schedule.every(REFRESH_RATE).second.do(job)
+schedule.every(REFRESH_RATE).hours.do(job)
 
 while True:
     schedule.run_pending()
