@@ -15,9 +15,9 @@ def job():
     print("🕑 Refreshing datas...")
     # @todo => backup de la database
     # fetch data and put them in the data_sources_outdir. Can be modified in the constant file
+    # @todo => if error restart the process of data_fetching and send email if rety fails
     get_data_sources()
     # check if files are in the right dir, if not, stop the process.
-    # @todo => Restart the process of data_fetching and send email if rety fails
     check_files()
     create_first_tables_in_db()
     # truncate necessary tables
