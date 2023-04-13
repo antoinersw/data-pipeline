@@ -16,6 +16,7 @@ def connect_to_db():
     db = conn.cursor()
     return [db,conn]
 
+# unused
 def connect_to_main_db():
     conn = psycopg2.connect(
         host=HOST,
